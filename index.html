@@ -1,0 +1,385 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我的世界建筑工具大全</title>
+    <link rel="icon" type="image/x-icon" href="./logo.ico" />
+    <script type="text/javascript">
+        document.write('<div id="readyui" style="width: 100%;height: 100%;top: 0;left: 0;position: fixed;background: #fff;z-index: 9999999;"><marquee style="width: 50%;font-size: xxx-large;position: absolute;top: 50%;transform: translateY(-50%);left: 25%;border-left-style: solid;border-right-style: solid;" Scrollamount=50>加载中. . .</marquee></div>');
+        if ((navigator.userAgent.match(/(phone|iPhone|ios|Android|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+            pc = 0;
+            document.write('<style>#head{font-size: 1.2cm;box-shadow: 0px 0.2cm 0.6cm aqua;padding-top: 0.2cm;padding-left: 1.5cm;padding-right: 1.5cm;padding-bottom: 0.2cm;}#foot{font-size: 0.8cm;}#main{box-shadow: 0px 0.3cm 0.8cm #000;}.urb{border-radius:1cm;box-shadow: 0px 0.3cm 0.8cm #000;font-size: 0.6cm;padding: 0.4cm;}#tlist {margin-left: 1.2cm;}#smain {margin: 0.5cm;}#left{max-width: 18cm;min-width: 12cm;}#center{max-width: 18cm;min-width: 12cm;}#right{max-width: 18cm;min-width: 12cm;}[name="block"]{margin: 0.5cm;border-radius:1cm;padding: 0.5cm;padding-top: 2.5cm;border-width: 2;line-height: 1.4cm;font-size: 0.7cm;}[name="blockt"]{border-radius:1cm;border-width: 2;padding-top: 0.4cm;padding-bottom: 0.4cm;box-shadow: 0px 2px 0.2cm #bbb;}[name="sblockt"]{padding-left: 0.5cm;padding-right: 0.5cm;}</style>')
+        } else {
+            pc = 1;
+            document.write('<style>#head{font-size: 0.8cm;box-shadow:0px 0.1cm 0.4cm aqua;padding-top:0.1cm;padding-left:1cm;padding-right:1cm;padding-bottom:0.1cm;}#foot{font-size:0.6cm;}#main{box-shadow:0px 0.2cm 0.5cm #000;}#tlist{margin-left:1.2cm;font-size:0.6cm;}#smain{margin:0.5cm;}#left{max-width:12cm;min-width:8cm;}#center{max-width:12cm;min-width:8cm;}#right{max-width:12cm;min-width:8cm;}[name="block"]{margin:0.5cm;border-radius:0.5cm;padding:0.5cm;padding-top:1.5cm;border-width:2px;line-height:0.8cm;}[name="blockt"]{border-radius:0.5cm;border-width:2px;padding-top:0.25cm;padding-bottom:0.25cm;box-shadow:0px 2px 0.2cm #bbb;}[name="sblockt"]{padding-left:0.5cm;padding-right:0.5cm;}.urb{border-radius:1cm;box-shadow:0px 0.2cm 0.5cm #000;font-size:0.6cm;padding:0.4cm;}</style>')
+        }
+        function clearui() {
+            W = smain.clientWidth;
+            if (pc) {
+                if (W > 24 * onecm.clientWidth) {
+                    zt = 3
+                    for (i = 0; i < bname.length; i++) {
+                        bname[i].style.width = W / 3 + "px";
+                    }
+                    center.style.left = W / 3 + "px"
+                    right.style.left = 2 * W / 3 + "px"
+                }
+                if (W < 24 * onecm.clientWidth) {
+                    zt = 2
+                    for (i = 0; i < bname.length; i++) {
+                        bname[i].style.width = W / 2 + "px";
+                    }
+                    center.style.left = W / 2 + "px"
+                    right.style.left = ""
+                }
+                if (window.innerWidth < 18 * onecm.clientWidth) {
+                    zt = 1
+                    for (i = 0; i < bname.length; i++) {
+                        bname[i].style.width = W + "px";
+                    }
+                    center.style.left = ""
+                    right.style.left = ""
+                }
+                if (window.innerWidth >= 37 * onecm.clientWidth) {
+                    zt = 4;
+                }
+                if (zt == 1) {
+                    smain.style.left = (window.innerWidth - 13 * onecm.clientWidth) / 2 + "px"
+                    smain.style.width = 12 * onecm.clientWidth
+                } else if (zt == 4) {
+                    smain.style.left = (window.innerWidth - 37 * onecm.clientWidth) / 2 + "px";
+                    smain.style.width = 36 * onecm.clientWidth
+                } else {
+                    smain.style.left = ""
+                    smain.style.width = ""
+                }
+                if (ct == 0 && zt == 4) {
+                    left.innerHTML = "";
+                    center.innerHTML = "";
+                    right.innerHTML = "";
+                    for (i = 0; i < sname.length; i++) {
+                        if (i == 1) {
+                            left.innerHTML = left.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                        } else if (i == 2) {
+                            center.innerHTML = center.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                        } else if (i == 3) {
+                            right.innerHTML = right.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                        } else {
+                            var min = left.clientHeight;
+                            var who = 1;
+                            if (center.clientHeight < min) {
+                                min = center.clientHeight;
+                                who = 2;
+                            }
+                            if (right.clientHeight < min) {
+                                min = right.clientHeight;
+                                who = 3;
+                            }
+                            if (who == 1) left.innerHTML = left.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                            else if (who == 2) center.innerHTML = center.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                            else right.innerHTML = right.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                        }
+                    }
+                }
+                if (ct != zt) {
+                    switch (zt) {
+                        case 1:
+                            left.innerHTML = "";
+                            center.innerHTML = "";
+                            right.innerHTML = "";
+                            for (i = 0; i < sname.length; i++) {
+                                left.innerHTML = left.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                            }
+                            break;
+                        case 2:
+                            left.innerHTML = "";
+                            center.innerHTML = "";
+                            right.innerHTML = "";
+                            for (i = 0; i < sname.length; i++) {
+                                if (i == 1) {
+                                    left.innerHTML = left.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                                } else {
+                                    if (left.clientHeight > center.clientHeight) {
+                                        center.innerHTML = center.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                                    } else {
+                                        left.innerHTML = center.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                                    }
+                                }
+                            }
+                            break;
+                        case 3:
+                            left.innerHTML = "";
+                            center.innerHTML = "";
+                            right.innerHTML = "";
+                            for (i = 0; i < sname.length; i++) {
+                                if (i == 1) {
+                                    left.innerHTML = left.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                                } else if (i == 2) {
+                                    center.innerHTML = center.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                                } else if (i == 3) {
+                                    right.innerHTML = right.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                                } else {
+                                    var min = left.clientHeight;
+                                    var who = 1;
+                                    if (center.clientHeight < min) {
+                                        min = center.clientHeight;
+                                        who = 2;
+                                    }
+                                    if (right.clientHeight < min) {
+                                        min = right.clientHeight;
+                                        who = 3;
+                                    }
+                                    if (who == 1) left.innerHTML = left.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                                    else if (who == 2) center.innerHTML = center.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                                    else right.innerHTML = right.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                                }
+                            }
+                            break;
+                    }
+                }
+                ct = zt;
+            } else {
+                if (window.innerWidth > 19 * onecm.clientWidth) {
+                    zt = 2
+                    for (i = 0; i < bname.length; i++) {
+                        bname[i].style.width = +"18cm";
+                    }
+                }
+                if (window.innerWidth < 19 * onecm.clientWidth) {
+                    zt = 1
+                    for (i = 0; i < bname.length; i++) {
+                        bname[i].style.width = (window.innerWidth - onecm.clientWidth) + "px";
+                    }
+                }
+                if (zt == 2) {
+                    smain.style.left = (window.innerWidth - 18 * onecm.clientWidth) / 2 + "px"
+                    smain.style.width = 18 * onecm.clientWidth
+                } else {
+                    smain.style.left = ""
+                    smain.style.width = ""
+                }
+                left.innerHTML = "";
+                center.innerHTML = "";
+                right.innerHTML = "";
+                for (i = 0; i < sname.length; i++) {
+                    left.innerHTML = left.innerHTML + "<div name='bblock'>" + sname[i].innerHTML + "</div>";
+                }
+            }
+            main.style.top = head.clientHeight + "px";
+            foot.style.top = (head.clientHeight + main.clientHeight) + "px";
+            urb2.style.top = (urb1.offsetTop - urb2h) + "px"
+            urb3.style.top = (urb1.offsetTop - urb3h) + "px"
+            center.style.bottom = left.clientHeight + "px"
+            right.style.bottom = (left.clientHeight + center.clientHeight) + "px"
+            var H = left.clientHeight;
+            if (center.clientHeight > H) H = center.clientHeight;
+            if (right.clientHeight > H) H = right.clientHeight;
+            smain.style.height = H + "px";
+        }
+        function uiready() {
+            bname = document.getElementsByName("big");
+            sname = document.getElementsByName("yblock");
+            name = document.getElementsByName("block");
+            namet = document.getElementsByName("blockt");
+            urb2h = urb2.offsetTop
+            urb3h = urb3.offsetTop
+            ct = 0;
+        }
+        window.onload = function () {
+            uiready()
+            clearui()
+            clearui()
+            readyui.style.display = "none";
+        }
+        window.onresize = function () {
+            clearui()
+        }
+    </script>
+    <style>
+        body {
+            background: #444;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        #head {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: #fff;
+            z-index: 999;
+            background: #444;
+        }
+
+        #foot {
+            position: absolute;
+            left: 0;
+            color: #fff;
+            width: 100%;
+        }
+
+        #main {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            background: #fff;
+        }
+
+        #smain {
+            position: relative;
+            display: block;
+        }
+
+        #ylist {
+            overflow-y: auto;
+            white-space: nowrap;
+            display: block;
+        }
+
+        #left {
+            position: relative;
+        }
+
+        #center {
+            position: relative;
+            margin-top: -0.5cm;
+        }
+
+        #right {
+            position: relative;
+            margin-top: -0.5cm;
+        }
+
+        [name="block"] {
+            border-style: solid;
+            position: relative;
+        }
+
+        [name="blockt"] {
+            border-bottom-style: solid;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        @font-face {
+            font-family: 'CB';
+            src: url('CB.ttf') format('truetype');
+        }
+
+        .urb {
+            background: #fff;
+            display: inline-block;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="onecm" style="width: 1cm;"></div>
+    <div id="head">
+        <div style="display: inline-block;height: 2.25em;border-right: solid;">
+            <a style="display: inline;font-size: 1em;">𝖬𝖢𝖳𝗈𝗈𝗅</a>
+            <a style="position: relative;font-size: 0.5625em;top: 1.25em;right: 6em;">我的世界建筑工具大全</a>
+        </div>
+        <div style="display: inline;padding-right: 0.5cm;">
+        </div>
+    </div>
+    <div style="display: none;">
+        <div name="yblock">
+            <div name="block">
+                <div name="blockt">
+                    <div name="sblockt">
+                        通过几何图表画贝塞尔曲线
+                    </div>
+                </div>
+                <a href="https://www.desmos.com/calculator/mg8xog6cnj">二阶贝塞尔曲线</a><br />
+                <a href="https://www.desmos.com/calculator/b7mij1dikt">三阶贝塞尔曲线</a><br />
+                <a href="https://www.desmos.com/calculator/x7r6qjperl">四阶贝塞尔曲线</a><br />
+                <a href="https://www.desmos.com/calculator/icvkw2q3ww">五阶贝塞尔曲线</a><br />
+            </div>
+        </div>
+        <div name="yblock">
+            <div name="block">
+                <div name="blockt">
+                    <div name="sblockt">
+                        通过几何图表画圆弧
+                    </div>
+                </div>
+                <a href="https://www.desmos.com/calculator/kaalwicybu">根据首尾点画弧</a><br />
+                <a href="https://www.desmos.com/calculator/xtyf4sbzey">根据起点和控制点画弧</a><br />
+            </div>
+        </div>
+        <div name="yblock">
+            <div name="block">
+                <div name="blockt">
+                    <div name="sblockt">
+                        通过几何图表进行测量
+                    </div>
+                </div>
+                <a href="https://www.desmos.com/calculator/fc5gglumqc">三点确定的角的度数</a><br />
+            </div>
+        </div>
+        <div name="yblock">
+            <div name="block">
+                <div name="blockt">
+                    <div name="sblockt">
+                        通过几何图表画直线
+                    </div>
+                </div>
+                <a href="https://www.desmos.com/calculator/nflfiztqzc">两点确定一条直线</a><br />
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div id="smain">
+            <div name="big" id="left"></div>
+            <div name="big" id="center"></div>
+            <div name="big" id="right"></div>
+        </div>
+    </div>
+    <div id="foot">
+        <div style="text-align: center;position: relative;">
+            <h3 style="display: inline-block;">友情链接</h3><br />
+            <div id="ylist">
+                <div class="urb" id="urb1">
+                    <a target="_blank" href="https://www.desmos.com/" style="display: inline-block;height: 1.0cm;">
+                        <img src="./desmos.png" style="height: 1.5em;" />
+                    </a>
+                </div>&nbsp;
+                <div class="urb" id="urb2">
+                    <a target="_blank" href="http://seventop.top/"
+                        style="display: inline-block;height: 1.0cm;text-decoration:none;color: #000;">
+                        <img src="./CCPIRA.svg" style="height: 1.4cm;position: relative;bottom: 0.2cm;" />
+                        <font style="font-family: CB;position: relative;bottom: 0.6cm;font-size: 0.8cm;right: 0.1cm;">
+                            CCPIRA</font>
+                    </a>
+                </div>&nbsp;
+                <div class="urb" id="urb3">
+                    <a target="_blank" href="http://sc.seventop.top/"
+                        style="display: inline-block;height: 1.0cm;text-decoration:none;color: #000;top: 0.1cm;position: relative;">
+                        |简·陋|系列程序
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr color="#fff" style="width: 80%;" />
+        <div id="tlist">
+            联系方式
+            <br /><a style="position: relative;top: 0.6em;">QQ:</a>
+            <br /><a style="position: relative;left: 4em;bottom: 0.7em;">2507917746</a>
+            <br /><a style="position: relative;bottom: 0.6em;">微信:</a>
+            <br /><a style="position: relative;left: 4em;bottom: 1.9em;">King-qin369</a>
+        </div>
+        <div style="text-align: right;font-size: 0.7em;margin: 0.3em;">
+            Copyleft © 1368-1644 重工业玉米 All rights reserved.
+        </div>
+
+    </div>
+</body>
+
+</html>
